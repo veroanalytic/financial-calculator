@@ -1,7 +1,3 @@
-import sys
-import pandas as pd
-
-
 class Calculator:
 
 
@@ -25,9 +21,10 @@ class Calculator:
             / ((1 + periodic_interest_rate) ** (life_of_loan * payments_per_year) - 1) * loan_amount
         sum_of_payments = payments_per_period * payments_per_year * life_of_loan
         interest_cost = sum_of_payments - loan_amount
-        property_tax = house_price * 0.0111
-        property_insurance = house_price * 0.005532
-        total_monthly_payments = payments_per_period + (property_tax / 12) + (property_insurance / 12)
+        monthly_property_tax = (house_price * 0.0111) / 12
+        monthly_property_insurance = (house_price * 0.005532) / 12
+        monthly_utility_cost = 4800.00 / 12
+        total_monthly_payments = payments_per_period + monthly_property_tax + monthly_property_insurance + monthly_utility_cost
 
 
         # print output
@@ -35,14 +32,15 @@ class Calculator:
         print(f"\nTotal down payment : ${round(down_payment_total, 2)}")
         print(f"Total loan amount: ${round(loan_amount, 2)}")
         print(f"Total interest cost: ${round(interest_cost, 2)}")
-        # print(f"Loan monthly payments: ${round(payments_per_period, 2)}")
         print(f"Total sum of payments: ${round(sum_of_payments, 2)}")
         
-        print(f"\nAnnual property tax: ${round(property_tax, 2)}")
-        print(f"Annual property insurance: ${round(property_insurance, 2)} \n")
+        print(f"\nEstimated monthly property tax: ${round(monthly_property_tax, 2)}")
+        print(f"Estimated monthly property insurance: ${round(monthly_property_insurance, 2)}")
+        print(f"Estimated monthly utility cost: ${monthly_utility_cost}\n")
 
         print(seperator)
-        print(f"\nTotal monthly payments (Mortgage + Property Tax + Insurance + HOA): \n${round(total_monthly_payments, 2)}\n")
+        print(f"\nLoan monthly payments: ${round(payments_per_period, 2)}")
+        print(f"\nTotal monthly payments (Loan + Property Tax + Insurance + Utilities): \n${round(total_monthly_payments, 2)}\n")
         print(seperator)
 
         return "\nEnd program"
