@@ -1,5 +1,6 @@
-from calculator import salary_calculator
-from calculator import MortgageCalculator
+from calculator import Calculator
 
-# print(salary_calculator())
-print(MortgageCalculator.customer_input())
+app = Calculator()
+
+app.mortgage_calculations()
+app.salary_calculator()

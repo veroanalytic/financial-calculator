@@ -1,9 +1,15 @@
+import sys
+from turtle import down
+take_after_taxes = 0.68
+seperator = "==============================================================================="
+
+
 class Calculator:
 
 
     def mortgage_calculations(self):
 
-        seperator = "==============================================================================="
+
         
         # user input
         print(f"\n{seperator}")
@@ -41,12 +47,66 @@ class Calculator:
         print(seperator)
         print(f"\nLoan monthly payments: ${round(payments_per_period, 2)}")
         print(f"\nTotal monthly payments (Loan + Property Tax + Insurance + Utilities): \n${round(total_monthly_payments, 2)}\n")
-        print(seperator)
+        print(f"{seperator}\n")
 
-        return "\nEnd program"
+        # return "\nEnd program"
+
+
+    def salary_calculator(self):
+        print(f"\n{seperator}\n")
+        hourly_wage = int(input("What is your hourly wage? "))
+        tax_salary = input("Do you want (pre) or (post) tax salary? ")
+        frequency_salary = input("Do you want (weekly), (biweekly), (monthly), or (annual) salary calculated? ")
+        print(f"\n{seperator}\n")
+        
+
+    # Pre-Tax Salary (weekly, biweekly, monthly, annual)
+        if tax_salary.lower() == 'pre' and frequency_salary.lower() =='weekly':
+            weekly_pre_tax_wage = hourly_wage * 40
+            print(f"Your Weekly Pre-Taxed Wage is: ${round(weekly_pre_tax_wage, 2)}")
+            print(f"\n{seperator}\n")
+        elif tax_salary.lower() == 'pre' and frequency_salary.lower() == 'biweekly':
+            bi_weekly_pre_tax_wage = hourly_wage * 80
+            print(f"Your Bi-Weekly Pre-Taxed Wage is: ${round(bi_weekly_pre_tax_wage, 2)}")
+            print(f"\n{seperator}\n")
+        elif tax_salary.lower() == 'pre' and frequency_salary.lower() == 'monthly':
+            monthly_pre_tax_wage = hourly_wage * 173.3333333333333
+            print(f"Your Monthly Pre-Taxed Wage is: ${round(monthly_pre_tax_wage, 2)}")
+            print(f"\n{seperator}\n")
+        elif tax_salary.lower() == 'pre' and frequency_salary.lower() == 'annual':
+            annual_pre_tax_wage = hourly_wage * 2080
+            print(f"Your Annual Pre-Taxed Wage is: ${round(annual_pre_tax_wage, 2)}")
+            print(f"\n{seperator}\n")
+
+    # Post Tax Salary (weekly, biweekly, monthly, annual)
+        elif tax_salary.lower() == 'post' and frequency_salary.lower() == 'weekly':
+            weekly_pre_tax_wage = hourly_wage * 40
+            weekly_post_tax_wage = weekly_pre_tax_wage * take_after_taxes
+            print(f"Your Weekly Post-Taxed Wage is: ${round(weekly_post_tax_wage, 2)}")
+            print(f"\n{seperator}\n")
+        elif tax_salary.lower() == 'post' and frequency_salary.lower() == 'biweekly':
+            bi_weekly_pre_tax_wage = hourly_wage * 80
+            bi_weekly_post_tax_wage = bi_weekly_pre_tax_wage * take_after_taxes
+            print(f"Your Bi-Weekly Post-Taxed Wage is: ${round(bi_weekly_post_tax_wage, 2)}")
+            print(f"\n{seperator}\n")
+        elif tax_salary.lower() == 'post' and frequency_salary.lower() == 'monthly':
+            monthly_pre_tax_wage = hourly_wage * 173.3333333333333
+            monthly_post_tax_wage = monthly_pre_tax_wage * take_after_taxes
+            print(f"Your Monthly Post-Taxed Wage is: ${round(monthly_post_tax_wage, 2)}")
+            print(f"\n{seperator}\n")
+        elif tax_salary.lower() == 'post' and frequency_salary.lower() == 'annual':
+            annual_pre_tax_wage = hourly_wage * 2080
+            annual_post_tax_wage = annual_pre_tax_wage * take_after_taxes
+            print(f"Your Annual Post-Taxed Wage is: ${round(annual_post_tax_wage, 2)}")
+            print(f"\n{seperator}\n")
+            
+        else:
+            print("invalid entry")
+            print(f"\n{seperator}\n")
 
 
 app = Calculator()
 app.mortgage_calculations()
+app.salary_calculator()
 
 
